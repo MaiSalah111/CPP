@@ -1,9 +1,15 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cctype>
 
-Contact::Contact() : isValid(false) {}
-Contact::~Contact() {}
+Contact::Contact() {
+    isValid = false;
+}
+
+Contact::~Contact() {
+    // Nothing to clean up
+}
 
 bool Contact::setFirstName(const std::string& name) {
     if (name.empty()) {
@@ -37,6 +43,12 @@ bool Contact::setPhoneNumber(const std::string& number) {
         std::cout << "Phone number cannot be empty." << std::endl;
         return false;
     }
+    for (size_t i = 0; i < number.length(); i++) {
+        if (!std::isdigit(number[i])) {
+            std::cout << "Phone number must contain only digits." << std::endl;
+            return false;
+        }
+    }
     phoneNumber = number;
     return true;
 }
@@ -65,9 +77,14 @@ bool Contact::setContact() {
     std::getline(std::cin, input);
     if (!setNickname(input)) return false;
     
-    std::cout << "Enter phone number: ";
-    std::getline(std::cin, input);
-    if (!setPhoneNumber(input)) return false;
+    bool validPhone = false;
+    while (!validPhone) {
+        std::cout << "Enter phone number: ";
+        std::getline(std::cin, input);
+        if (std::cin.eof())
+            return false;
+        validPhone = setPhoneNumber(input);
+    }
     
     std::cout << "Enter darkest secret: ";
     std::getline(std::cin, input);

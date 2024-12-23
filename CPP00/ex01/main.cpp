@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <cstdlib> // for strtol
 
 int main() {
     PhoneBook phoneBook;
@@ -26,11 +27,13 @@ int main() {
             std::string indexStr;
             std::cout << "Enter index to display: ";
             std::getline(std::cin, indexStr);
-            try {
-                int index = std::stoi(indexStr);
-                phoneBook.displayContact(index);
-            } catch (...) {
+            
+            char* endPtr;
+            int index = std::strtol(indexStr.c_str(), &endPtr, 10);
+            if (*endPtr != '\0' || endPtr == indexStr.c_str() || index < 0) {
                 std::cout << "Invalid index!" << std::endl;
+            } else {
+                phoneBook.displayContact(index);
             }
         }
     }
