@@ -16,7 +16,7 @@ void Account::_displayTimestamp()
 {
     std::time_t now = time(0);
     char timestamp[20];
-    std::strftime(timestamp, sizeof(timestamp), "[%Y%m%d_%H%M%S]", std::localtime(&now));
+    std::strftime(timestamp, sizeof(timestamp), "[%Y%m%d_%H%M%S]", std::gmtime(&now));
     std::cout << timestamp << " ";
 }
 
