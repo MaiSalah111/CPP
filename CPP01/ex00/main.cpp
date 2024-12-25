@@ -1,8 +1,5 @@
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
-
 int main() {
     // Creating a zombie on the heap
     Zombie* heapZombie = newZombie("Heap Walker");
