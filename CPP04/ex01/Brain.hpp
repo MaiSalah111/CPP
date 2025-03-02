@@ -16,6 +16,7 @@ public:
     ~Brain(); // Destructor
 
     // Utility functions
+    void printIdeas() const;
     void setIdea(int index, const std::string& idea);
     std::string getIdea(int index) const;
 };
