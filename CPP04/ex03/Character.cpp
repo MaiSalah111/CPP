@@ -1,93 +1,98 @@
 #include "Character.hpp"
 
-Character::Character(std::string const & name) : name(name), droppedCount(0) {
-    for (int i = 0; i < MAX_SLOTS; i++)
-        inventory[i] = NULL;
-    for (int i = 0; i < MAX_DROPPED; i++)
-        dropped[i] = NULL;
+Character::Character()
+{
+    name = "";
+    for(int i = 0; i < 4; i++)
+        this->inventory[i] = NULL;
+    LinkedInventory = new LinkedList();
+    // std::cout << "Character Default Constructor Called" << std::endl;
 }
 
-Character::Character(Character const & other) : name(other.name), droppedCount(0) {
-    // Initialize everything to NULL first
-    for (int i = 0; i < MAX_SLOTS; i++)
-        inventory[i] = NULL;
-    for (int i = 0; i < MAX_DROPPED; i++)
-        dropped[i] = NULL;
-    
-    // Then copy the inventory
-    for (int i = 0; i < MAX_SLOTS; i++) {
-        if (other.inventory[i]) {
-            inventory[i] = other.inventory[i]->clone();
-        }
-    }
+Character::Character(std::string str)
+{
+    name = str;
+    LinkedInventory = new LinkedList;
+    for(int i = 0; i < 4; i++)
+        this->inventory[i] = NULL;
+    // std::cout << "Character Parameterized Constructor Called" << std::endl;
+
 }
 
-Character::~Character() {
-    // Clean up inventory
-    for (int i = 0; i < MAX_SLOTS; i++) {
-        delete inventory[i];
-        inventory[i] = NULL;
-    }
-    // Clean up dropped items
-    for (int i = 0; i < droppedCount; i++) {
-        delete dropped[i];
-        dropped[i] = NULL;
-    }
-}
-
-Character& Character::operator=(Character const & other) {
-    if (this != &other) {
-        // Clean up existing inventory
-        for (int i = 0; i < MAX_SLOTS; i++) {
-            delete inventory[i];
+Character::Character(const Character &copy)
+{
+    LinkedInventory = new LinkedList;
+    this->name = copy.name;
+    for(int i = 0; i < 4; i++)
+    {
+        if(copy.inventory[i])
+            inventory[i] = copy.inventory[i]->clone();
+        else
             inventory[i] = NULL;
-        }
-        
-        // Clean up dropped items
-        for (int i = 0; i < droppedCount; i++) {
-            delete dropped[i];
-            dropped[i] = NULL;
-        }
-        droppedCount = 0;
-        
-        // Copy name and materias
-        name = other.name;
-        for (int i = 0; i < MAX_SLOTS; i++) {
-            if (other.inventory[i]) {
-                inventory[i] = other.inventory[i]->clone();
+    }
+}
+
+Character &Character::operator=(const Character &other)
+{
+    if(this != &other)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            if(inventory[i])
+            {
+                delete inventory[i];
+                inventory[i] = NULL;
             }
         }
-    }
-    return *this;
-}
-
-void Character::equip(AMateria* m) {
-    if (!m)
-        return;
-        
-    for (int i = 0; i < MAX_SLOTS; i++) {
-        if (!inventory[i]) {
-            inventory[i] = m;
-            return;
+        name = other.name;
+        for(int i = 0; i < 4; i++)
+        {
+            if(other.inventory[i])
+                inventory[i] = other.inventory[i]->clone();
         }
     }
-    // If we couldn't equip it, delete it
-    delete m;
+    return (*this);
 }
 
-void Character::unequip(int idx) {
-    if (idx < 0 || idx >= MAX_SLOTS || !inventory[idx] || droppedCount >= MAX_DROPPED)
-        return;
-        
-    dropped[droppedCount++] = inventory[idx];
-    inventory[idx] = NULL;
+std::string const &Character::getName() const
+{
+    return (this->name);
 }
 
-void Character::use(int idx, ICharacter& target) {
-    if (idx >= 0 && idx < MAX_SLOTS && inventory[idx])
-        inventory[idx]->use(target);
+void Character::equip(AMateria *m)
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(!this->inventory[i])
+        {
+            this->inventory[i] = m;
+            return ;
+        }
+    }
 }
 
-std::string const & Character::getName() const {
-    return name;
+void Character::unequip(int idx)
+{
+    if(idx >= 0 && idx < 4)
+    {
+        LinkedInventory->addNode(inventory[idx]);
+        this->inventory[idx] = NULL;
+    }
+}
+
+void Character::use(int idx, ICharacter &target)
+{
+    if(idx>= 0 && idx < 4 && this->inventory[idx])
+        this->inventory[idx]->use(target);
+}
+
+Character::~Character()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(this->inventory[i])
+            delete this->inventory[i];
+    }
+    delete LinkedInventory;
+    // std::cout << "Character Destructor Called" << std::endl;
 }

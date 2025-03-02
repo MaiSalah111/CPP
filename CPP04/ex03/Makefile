@@ -1,21 +1,17 @@
-NAME = Interface
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFILES 	   = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp LinkedList.cpp \
 
-SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
-OBJS = $(SRCS:.cpp=.o)
+CPP	= c++
+
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+
+NAME	= Interface
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(CPPFILES)
+	$(CPP) $(CPPFLAGS) $(CPPFILES) -o $(NAME)
 
-clean:
-	rm -f $(OBJS)
-
-fclean: clean
+fclean:
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re 

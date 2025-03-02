@@ -1,14 +1,21 @@
-class MateriaSource : public IMateriaSource {
-private:
-    static const int MAX_MATERIAS = 4;
-    AMateria* templates[MAX_MATERIAS];
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-public:
+#include "IMateriaSource.hpp"
+
+class MateriaSource : public IMateriaSource{
+    private:
+    AMateria *materias[4];
+
+    public:
     MateriaSource();
-    MateriaSource(const MateriaSource& other);
-    virtual ~MateriaSource();
-    MateriaSource& operator=(const MateriaSource& other);
+    MateriaSource(const MateriaSource &copy);
+    ~MateriaSource();
 
-    virtual void learnMateria(AMateria*);
-    virtual AMateria* createMateria(std::string const & type);
-}; 
+    MateriaSource &operator=(const MateriaSource &other);
+
+    void learnMateria(AMateria*);
+    AMateria* createMateria(std::string const & type);
+};
+
+#endif

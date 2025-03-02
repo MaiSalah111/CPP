@@ -1,20 +1,27 @@
-class Character : public ICharacter {
-private:
-    static const int MAX_SLOTS = 4;
-    static const int MAX_DROPPED = 100;
-    std::string name;
-    AMateria* inventory[MAX_SLOTS];
-    AMateria* dropped[MAX_DROPPED];
-    int droppedCount;
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-public:
-    Character(std::string const & name);
-    Character(Character const & other);
-    virtual ~Character();
-    Character& operator=(Character const & other);
-    
-    virtual std::string const & getName() const;
-    virtual void equip(AMateria* m);
-    virtual void unequip(int idx);
-    virtual void use(int idx, ICharacter& target);
-}; 
+#include "ICharacter.hpp"
+#include "LinkedList.hpp"
+
+class Character : public ICharacter{
+    private:
+    std::string name;
+    LinkedList *LinkedInventory;
+    AMateria *inventory[4];
+
+    public:
+    Character();
+    Character(std::string str);
+    Character(const Character &copy);
+    ~Character();
+
+    Character &operator=(const Character &other);
+
+    std::string const &getName() const;
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
+};
+
+#endif
