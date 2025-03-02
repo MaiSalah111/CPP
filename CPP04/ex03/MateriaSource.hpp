@@ -3,18 +3,19 @@
 
 #include "IMateriaSource.hpp"
 
-class MateriaSource : public IMateriaSource {
-private:
-    AMateria* learned[4];  // Storage for learned materias
+class MateriaSource : public IMateriaSource{
+    private:
+    AMateria *materias[4];
 
-public:
+    public:
     MateriaSource();
-    MateriaSource(const MateriaSource& other);
-    MateriaSource& operator=(const MateriaSource& other);
-    virtual ~MateriaSource();
+    MateriaSource(const MateriaSource &copy);
+    ~MateriaSource();
 
-    virtual void learnMateria(AMateria*);
-    virtual AMateria* createMateria(std::string const & type);
+    MateriaSource &operator=(const MateriaSource &other);
+
+    void learnMateria(AMateria*);
+    AMateria* createMateria(std::string const & type);
 };
 
-#endif 
+#endif

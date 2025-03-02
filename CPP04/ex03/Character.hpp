@@ -2,26 +2,26 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
-#include "AMateria.hpp"
+#include "LinkedList.hpp"
 
-class Character : public ICharacter {
-private:
+class Character : public ICharacter{
+    private:
     std::string name;
-    AMateria* inventory[4];  // Fixed size inventory
-    static const int MAX_FLOOR = 100;  // Add this
-    static AMateria* floor[MAX_FLOOR]; // Add this
-    static int floorCount;             // Add this
+    LinkedList *LinkedInventory;
+    AMateria *inventory[4];
 
-public:
-    Character(std::string const & name);
-    Character(const Character& other);
-    Character& operator=(const Character& other);
-    virtual ~Character();
+    public:
+    Character();
+    Character(std::string str);
+    Character(const Character &copy);
+    ~Character();
 
-    virtual std::string const & getName() const;
-    virtual void equip(AMateria* m);
-    virtual void unequip(int idx);
-    virtual void use(int idx, ICharacter& target);
+    Character &operator=(const Character &other);
+
+    std::string const &getName() const;
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
 };
 
-#endif 
+#endif
