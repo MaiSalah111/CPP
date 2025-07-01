@@ -1,7 +1,8 @@
 #include "Serializer.hpp"
 #include <iostream>
 
-int main() {
+int main()
+{
     Data data;
     data.number = 42;
     data.text = "Hello, serialization!";
@@ -14,9 +15,13 @@ int main() {
     std::cout << "Data: number = " << ptr->number << ", text = " << ptr->text << std::endl;
 
     if (ptr == &data)
+    {
         std::cout << "Success: pointers match!" << std::endl;
+    }
     else
+    {
         std::cout << "Error: pointers do not match!" << std::endl;
+    }
 
-    return 0;
+    return (0);
 } 

@@ -4,13 +4,20 @@
 #include <cstdlib>
 #include <ctime>
 
-Base* generate() {
+Base* generate()
+{
     std::srand(std::time(0) + std::rand());
     int r = std::rand() % 3;
     if (r == 0)
-        return new A;
+    {
+        return (new A);
+    }
     else if (r == 1)
-        return new B;
+    {
+        return (new B);
+    }
     else
-        return new C;
+    {
+        return (new C);
+    }
 } 

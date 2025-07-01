@@ -3,7 +3,8 @@
 
 #include <string>
 
-struct Data {
+struct Data
+{
     int number;
     std::string text;
 };

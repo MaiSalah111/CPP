@@ -8,8 +8,10 @@ Base* generate();
 void identify(Base* p);
 void identify(Base& p);
 
-int main() {
-    for (int i = 0; i < 3; ++i) {
+int main()
+{
+    for (int i = 0; i < 3; ++i)
+    {
         Base* ptr = generate();
         std::cout << "Pointer: ";
         identify(ptr);
@@ -18,5 +20,5 @@ int main() {
         delete ptr;
         std::cout << "----" << std::endl;
     }
-    return 0;
+    return (0);
 } 

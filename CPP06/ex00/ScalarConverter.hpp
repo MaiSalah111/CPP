@@ -3,7 +3,8 @@
 
 #include <string>
 
-class ScalarConverter {
+class ScalarConverter
+{
 private:
     ScalarConverter();
     ScalarConverter(const ScalarConverter&);
@@ -13,4 +14,4 @@ public:
     static void convert(const std::string& literal);
 };
 
-#endif 
+#endif
