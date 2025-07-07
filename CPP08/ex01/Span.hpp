@@ -26,11 +26,13 @@ public:
     
     // Add range of numbers
     template<typename Iterator>
-    void addRange(Iterator begin, Iterator end) {
+    void addRange(Iterator begin, Iterator end) 
+    {
         unsigned int remainingSpace = _maxSize - _numbers.size();
         unsigned int rangeSize = std::distance(begin, end);
         
-        if (rangeSize > remainingSpace) {
+        if (rangeSize > remainingSpace)
+        {
             throw std::out_of_range("Not enough space to add all numbers");
         }
         
@@ -38,9 +40,18 @@ public:
     }
     
     // Getters for testing
-    unsigned int getMaxSize() const { return _maxSize; }
-    unsigned int getCurrentSize() const { return _numbers.size(); }
-    const std::vector<int>& getNumbers() const { return _numbers; }
+    unsigned int getMaxSize() const 
+    { 
+        return (_maxSize); 
+    }
+    unsigned int getCurrentSize() const 
+    { 
+        return (_numbers.size()); 
+    }
+    const std::vector<int>& getNumbers() const
+    { 
+        return (_numbers); 
+    }
 };
 
 #endif 
