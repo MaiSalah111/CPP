@@ -2,13 +2,15 @@
 #define ITER_HPP
 
 template <typename T, typename F>
-void iter(T *array, unsigned int length, F func) {
+void iter(T *array, unsigned int length, F func)
+{
     for (unsigned int i = 0; i < length; ++i)
         func(array[i]);
 }
 
 template <typename T, typename F>
-void iter(const T *array, unsigned int length, F func) {
+void iter(const T *array, unsigned int length, F func)
+{
     for (unsigned int i = 0; i < length; ++i)
         func(array[i]);
 }

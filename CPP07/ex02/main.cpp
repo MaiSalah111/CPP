@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Array.hpp"
 
-int main() {
+int main()
+{
     std::cout << "Create an Array<int> of size 5 and fill it with i*2:" << std::endl;
     Array<int> a(5);
     for (unsigned int i = 0; i < a.size(); ++i)
@@ -34,10 +35,13 @@ int main() {
     std::cout << std::endl;
 
     std::cout << "\nTest out-of-bounds access (should catch exception):" << std::endl;
-    try {
+    try
+    {
         std::cout << "Accessing out of bounds: ";
         std::cout << a[10] << std::endl;
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cout << "Caught exception!" << std::endl;
     }
 
@@ -45,5 +49,5 @@ int main() {
     Array<int> empty;
     std::cout << "Empty array size: " << empty.size() << std::endl;
 
-    return 0;
+    return (0);
 } 

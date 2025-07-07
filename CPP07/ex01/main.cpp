@@ -1,33 +1,49 @@
 #include <iostream>
 #include "iter.hpp"
 
-void printInt(const int &x) {
+void printInt(const int &x)
+{
     std::cout << x << std::endl;
 }
 
-void printStr(const std::string &s) {
+void printStr(const std::string &s)
+{
     std::cout << s << " ";
 }
 
-void increment(int &x) {
+void increment(int &x)
+{
     ++x;
 }
 
-class CustomClass {
+class CustomClass
+{
 public:
-    CustomClass(void) : _n(42) { return; }
-    int get(void) const { return this->_n; }
+    CustomClass(void) : _n(42)
+    {
+        return;
+    }
+    int get(void) const
+    {
+        return (this->_n);
+    }
 private:
     int _n;
 };
 
-std::ostream &operator<<(std::ostream &o, CustomClass const &a) { o << a.get(); return o; }
+std::ostream &operator<<(std::ostream &o, CustomClass const &a)
+{
+    o << a.get();
+    return (o);
+}
 
-void printCustomClass(const CustomClass &x) {
+void printCustomClass(const CustomClass &x)
+{
     std::cout << x << std::endl;
 }
 
-int main() {
+int main()
+{
     int arr[] = {1, 2, 3, 4, 5};
     size_t len = sizeof(arr) / sizeof(arr[0]);
     std::cout << "Original int array:" << std::endl;
@@ -51,5 +67,5 @@ int main() {
     std::cout << "tab2 is an array of 5 CustomClass objects, each initialized to 42, so five lines of 42:" << std::endl;
     iter(tab2, 5, printCustomClass);
 
-    return 0;
+    return (0);
 } 

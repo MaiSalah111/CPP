@@ -5,7 +5,8 @@
 #include <cstddef>
 
 template <typename T>
-class Array {
+class Array
+{
 private:
     T* _data;
     unsigned int _size;
