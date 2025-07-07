@@ -6,7 +6,7 @@
 
 int main()
 {
-    std::cout << "=== Testing easyfind with vector ===" << std::endl;
+    std::cout << "*** Testing easyfind with vector ***" << std::endl;
     std::vector<int> vec;
     for (int i = 1; i <= 10; ++i)
     {
@@ -32,8 +32,13 @@ int main()
     {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
+
+
+
+
+
     
-    std::cout << "\n=== Testing easyfind with list ===" << std::endl;
+    std::cout << "\n*** Testing easyfind with list ***" << std::endl;
     std::list<int> lst;
     lst.push_back(10);
     lst.push_back(20);
@@ -57,8 +62,14 @@ int main()
     {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
+
+
+
+
+
     
-    std::cout << "\n=== Testing easyfind with deque ===" << std::endl;
+    
+    std::cout << "\n*** Testing easyfind with deque ***" << std::endl;
     std::deque<int> deq;
     deq.push_back(100);
     deq.push_back(200);

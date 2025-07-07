@@ -7,7 +7,7 @@
 
 int main()
 {
-    std::cout << "=== Basic Span Test (Subject Example) ===" << std::endl;
+    std::cout << "*** Basic Span Test (Subject Example) ***" << std::endl;
     try
     {
         Span sp = Span(5);
@@ -24,7 +24,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n=== Testing with addRange function ===" << std::endl;
+    std::cout << "\n*** Testing with addRange function ***" << std::endl;
     try
     {
         Span sp2 = Span(10);
@@ -55,7 +55,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n=== Testing error cases ===" << std::endl;
+    std::cout << "\n*** Testing error cases ***" << std::endl;
     try
     {
         Span sp3 = Span(2);
@@ -89,7 +89,7 @@ int main()
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
     
-    std::cout << "\n=== Testing with 10,000 numbers ===" << std::endl;
+    std::cout << "\n*** Testing with 10,000 numbers ***" << std::endl;
     try
     {
         Span sp6 = Span(10000);
@@ -115,7 +115,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n=== Testing copy constructor and assignment ===" << std::endl;
+    std::cout << "\n*** Testing copy constructor and assignment ***" << std::endl;
     try
     {
         Span original = Span(5);

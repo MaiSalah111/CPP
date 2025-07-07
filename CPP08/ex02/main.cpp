@@ -4,7 +4,7 @@
 #include "MutantStack.hpp"
 
 int main() {
-    std::cout << "=== Testing MutantStack (Subject Example) ===" << std::endl;
+    std::cout << "*** Testing MutantStack (Subject Example) ***" << std::endl;
     {
         MutantStack<int> mstack;
         mstack.push(5);
@@ -28,7 +28,7 @@ int main() {
         std::stack<int> s(mstack);
     }
     
-    std::cout << "\n=== Comparing with std::list ===" << std::endl;
+    std::cout << "\n*** Comparing with std::list ***" << std::endl;
     {
         std::list<int> lst;
         lst.push_back(5);
@@ -51,7 +51,7 @@ int main() {
         }
     }
     
-    std::cout << "\n=== Testing reverse iterators ===" << std::endl;
+    std::cout << "\n*** Testing reverse iterators ***" << std::endl;
     {
         MutantStack<int> mstack;
         for (int i = 1; i <= 5; ++i) {
@@ -71,7 +71,7 @@ int main() {
         std::cout << std::endl;
     }
     
-    std::cout << "\n=== Testing const iterators ===" << std::endl;
+    std::cout << "\n*** Testing const iterators ***" << std::endl;
     {
         MutantStack<int> mstack;
         mstack.push(10);
@@ -87,7 +87,7 @@ int main() {
         std::cout << std::endl;
     }
     
-    std::cout << "\n=== Testing copy constructor and assignment ===" << std::endl;
+    std::cout << "\n*** Testing copy constructor and assignment ***" << std::endl;
     {
         MutantStack<int> original;
         original.push(100);
@@ -123,7 +123,7 @@ int main() {
         std::cout << "Copy2 size: " << copy2.size() << std::endl;
     }
     
-    std::cout << "\n=== Testing with different data types ===" << std::endl;
+    std::cout << "\n*** Testing with different data types ***" << std::endl;
     {
         MutantStack<std::string> stringStack;
         stringStack.push("Hello");
@@ -139,7 +139,7 @@ int main() {
         std::cout << std::endl;
     }
     
-    std::cout << "\n=== Testing stack operations ===" << std::endl;
+    std::cout << "\n*** Testing stack operations ***" << std::endl;
     {
         MutantStack<int> mstack;
         

@@ -22,14 +22,14 @@ Span& Span::operator=(const Span& other) {
 // Member functions
 void Span::addNumber(int number) {
     if (_numbers.size() >= _maxSize) {
-        throw std::runtime_error("Span is full, cannot add more numbers");
+        throw std::out_of_range("Span is full, cannot add more numbers");
     }
     _numbers.push_back(number);
 }
 
 unsigned int Span::shortestSpan() const {
     if (_numbers.size() < 2) {
-        throw std::runtime_error("Need at least 2 numbers to calculate span");
+        throw std::logic_error("Need at least 2 numbers to calculate span");
     }
     
     std::vector<int> sorted = _numbers;
@@ -48,7 +48,7 @@ unsigned int Span::shortestSpan() const {
 
 unsigned int Span::longestSpan() const {
     if (_numbers.size() < 2) {
-        throw std::runtime_error("Need at least 2 numbers to calculate span");
+        throw std::logic_error("Need at least 2 numbers to calculate span");
     }
     
     std::vector<int>::const_iterator minIt = std::min_element(_numbers.begin(), _numbers.end());

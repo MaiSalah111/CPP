@@ -31,7 +31,7 @@ public:
         unsigned int rangeSize = std::distance(begin, end);
         
         if (rangeSize > remainingSpace) {
-            throw std::runtime_error("Not enough space to add all numbers");
+            throw std::out_of_range("Not enough space to add all numbers");
         }
         
         _numbers.insert(_numbers.end(), begin, end);
