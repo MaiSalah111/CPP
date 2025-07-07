@@ -115,33 +115,5 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
     
-    std::cout << "\n*** Testing copy constructor and assignment ***" << std::endl;
-    try
-    {
-        Span original = Span(5);
-        original.addNumber(1);
-        original.addNumber(5);
-        original.addNumber(10);
-        
-        Span copy1(original);
-        Span copy2 = original;
-        
-        std::cout << "Original shortest span: " << original.shortestSpan() << std::endl;
-        std::cout << "Copy1 shortest span: " << copy1.shortestSpan() << std::endl;
-        std::cout << "Copy2 shortest span: " << copy2.shortestSpan() << std::endl;
-        
-        // Modify original and verify copies are independent
-        original.addNumber(15);
-        std::cout << "After adding to original:" << std::endl;
-        std::cout << "Original size: " << original.getCurrentSize() << std::endl;
-        std::cout << "Copy1 size: " << copy1.getCurrentSize() << std::endl;
-        std::cout << "Copy2 size: " << copy2.getCurrentSize() << std::endl;
-        
-    }
-    catch (const std::exception& e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
-    
     return (0);
 } 

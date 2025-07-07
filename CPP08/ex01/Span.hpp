@@ -24,7 +24,7 @@ public:
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
     
-    // Bonus: add range of numbers
+    // Add range of numbers
     template<typename Iterator>
     void addRange(Iterator begin, Iterator end) {
         unsigned int remainingSpace = _maxSize - _numbers.size();
